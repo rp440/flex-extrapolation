@@ -72,7 +72,7 @@ The "8,000-token budget" is a filter on the 32,768-cap runs: a problem counts as
 - **Models.** One same-lineage pair, Qwen3.5 to Qwen3.6 (35B-A3B), built from Q8_0 GGUF files. Other model families and native BF16 weights are future work.
 - **Choice of alpha and mask.** Both were chosen by hand. A per-family or per-layer search for alpha is future work.
 - **Router.** The router is included in the mask. Extrapolating experts alone, and routing alone, are future work.
-- **Beyond MATH-500.** These runs used the whole-model alpha = 1.25 build, not the FFN-only build: MBPP 78 to 82 of 100, HumanEval 152 to 148 of 164, GSM8K 47 to 46 of 50. FFN-only runs on these benchmarks are future work. On Terminal-Bench (89 tasks) the score goes from 42 to 37; of the 84 tasks both models attempted, FLEX solves 8 that Qwen3.6 never did and loses 15. A task-by-task look at those 23 is future work.
+- **Beyond MATH-500.** These runs used the whole-model alpha = 1.25 build, not the FFN-only build: MBPP 78 to 82 of 100, HumanEval 152 to 148 of 164, GSM8K 47 to 46 of 50. FFN-only runs on these benchmarks are future work. On Terminal-Bench (89 tasks) the score goes from 42 to 37: across all 89, FLEX solves 10 that Qwen3.6 missed and loses 15 it had solved (two-sided sign test p ≈ 0.42, so no real difference). A task-by-task look at those 25 is future work.
 - **Why it works.** The result shows longer derivations finishing. Whether the update teaches shorter reasoning or changes termination behavior, and what the 12 problems FLEX loses have in common (10 of them hit the token cap under FLEX), are open questions.
 
 ## Repo contents
